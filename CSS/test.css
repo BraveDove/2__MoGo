@@ -1,0 +1,19 @@
+
+
+.inner__box {
+    margin: 0 auto;
+    max-width: 1200px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.box {
+    border: 1px solid silver;
+    flex-basis: 20%;
+    min-width: 200px;
+    margin: 0 auto;
+}
+
+
