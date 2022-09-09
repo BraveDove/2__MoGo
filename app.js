@@ -20,7 +20,7 @@ $(function() {
     });
 
     function checkScroll(scrollOffset) {
-        if (scrollOffset >= introH) {
+        if (scrollOffset >= 648) {
             header.addClass("fixed");
         } else {
             header.removeClass("fixed");
@@ -91,9 +91,9 @@ $(function() {
         var div = $("#nav")
         if ( !div.is(e.target) // если клик был не по нашему блоку
 		    && div.has(e.target).length === 0 ) { // и не по его дочерним элементам
-			$("#nav, #shadow, #burger").removeClass('active') // скрываем его
-		}
+			$("#nav, #shadow, #burger, #header").removeClass('active') // скрываем его
+		} 
     });
-
     
+
 });
