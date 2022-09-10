@@ -19,7 +19,7 @@ $(function() {
         console.log(scrollOffset)
     });
 
-    function checkScroll(scrollOffset) {
+    function checkScroll(scrollOffset) {   // === Scroll function ====
         if (scrollOffset >= 648) {
             header.addClass("fixed");
         } else {
@@ -59,6 +59,8 @@ $(function() {
         
     })
 
+// ################_Outline active elements_################ //
+
     $(window).on("scroll", function(){
         if (scrollOffset >= 0 && scrollOffset <= 1778) {
             $("#n1").addClass('active')
@@ -87,13 +89,68 @@ $(function() {
         }
     });
 
-    $(document).mouseup(function(e){
-        var div = $("#nav")
-        if ( !div.is(e.target) // если клик был не по нашему блоку
-		    && div.has(e.target).length === 0 ) { // и не по его дочерним элементам
-			$("#nav, #shadow, #burger, #header").removeClass('active') // скрываем его
-		} 
-    });
+// ################_Click outside the element_################ //
+
+    // $(document).mouseup(function(e){
+    //     var div = $("#nav")
+    //     if ( !div.is(e.target) // если клик был не по нашему блоку
+	// 	    && div.has(e.target).length === 0 ) { // и не по его дочерним элементам
+	// 		$("#nav, #shadow, #burger, #header").removeClass('active') // скрываем его
+	// 	} 
+    // });
     
+    const menuBtn = $(".nav-toggle"),
+      menu = $(".nav");
+
+// menuBtn.on("click", function () {
+//     if ($(this).hasClass("active")) {
+//         $(this).removeClass("active");
+//         menu.slideUp();
+//     } else {
+//         $(this).addClass("active");
+//         $(".nav").addClass("active");
+//         $(".header").addClass("active");
+//         menu.slideDown();
+//         // $(".nav").css("opacity", "1");
+//     }
+// });
+
+// $(document).click(function (e) {
+//     if (!menuBtn.is(e.target) && !menu.is(e.target) && menu.has(e.target).length === 0) {
+//         menu.slideUp();
+//         $(".header").removeClass('active')
+//         $(".nav").removeClass('active')              //РАЗОБРАТЬСЯ С ЭТИМ
+//         $(".nav-toggle").removeClass('active')
+//         $(".shadow").removeClass('active')
+//     };
+// });
+
+// ################_Nav animation_################ //
+
+
+    $(".nav-toggle").on("click", function(e){
+        e.preventDefault();
+
+        if ( $(this).hasClass('active') ) {
+            $(".nav").animate({top: "56px"}, 500)
+            $(".shadow").animate({top: "58px"}, 500)
+        } else {
+            $(".nav").animate({top: "-400px"}, 500)
+            $(".shadow").animate({top: "-400px"}, 500)
+        }
+    })
+
+
+    //    $(document).mouseup(function(e){
+    //     var div = $(".nav")
+    //     if ( !div.is(e.target) // если клик был не по нашему блоку
+	// 	    && div.has(e.target).length === 0 ) { // и не по его дочерним элементам
+    //             $(".nav").animate({top: "-400px"}, 1)
+    //             $(".shadow").animate({top: "-400px"}, 1) // скрываем его
+    //             $(".nav-toggle, .header").removeClass('active');
+	// 	} 
+    // });
+
+
 
 });
